@@ -7,18 +7,23 @@ body {
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #63e 100%);
-    z-index: -10;
-    height: 100%;
-    width: 100%;
+    display: none; /* Testez en désactivant ce style */
 }
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 
 h1 {
     color: #333;
-    margin-top: 20px;
+    margin-top: 50px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 1000; /* Pour un effet bold */
+    font-size: 40px;
 }
 
 .tools-grid {
@@ -30,24 +35,57 @@ h1 {
 }
 
 .tool-icon img {
-    width: 100px; /* Ajustez la taille des images si nécessaire */
-    height: 100px;
+    width: 180px; /* Ajustez la taille des images si nécessaire */
+    height: 180px;
     object-fit: contain;
 }
+
+/* Classe générale pour toutes les images d'outils */
+.tool-image {
+    object-fit: contain;
+    /* Vous pouvez définir une taille par défaut ici */
+    width: 4rem; /* 64px */
+    height: 4rem; /* 64px */
+    margin: 0.5rem; /* Exemple de marge */
+}
+
+/* Classes spécifiques pour chaque groupe */
+.spy-image {
+    width: 8rem; /* 80px */
+    height: 8rem; /* 80px */
+    margin: 2rem;
+}
+
+.seo-image {
+    width: 8rem; /* 72px */
+    height: 8rem; /* 72px */
+    margin: 2.6rem;
+}
+
+.ai-image {
+    width: 8rem; /* 64px */
+    height: 8rem; /* 64px */
+    margin: 2.6rem;
+}
+
 
 .tool-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-decoration: none;
     color: #333;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid black; /* Contour noir léger */
 }
 
 .tool-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px); /* L'effet 3D se produit au survol */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.4);
+    border-color: #333; /* Assombrir un peu le contour lors du survol */
 }
+
 
 .tool-icon {
     font-size: 40px;
@@ -58,11 +96,16 @@ h1 {
 .tool-name {
     font-size: 24px;
     margin-bottom: 10px;
+    text-align: left; /* Alignement à gauche */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
 }
 
 .tool-description {
     font-size: 14px;
     margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: #464646
 }
 
 .tool-includes img {
@@ -85,13 +128,9 @@ h1 {
     animation: pulse 1.5s infinite;
 }
 
+
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
-}
-
-.img-ecomhunt {
-    width: 2000px;
-    height: 2000px;
 }

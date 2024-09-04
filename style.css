@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #63e 100%);
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.tool-icon img {
+    width: 100px; /* Ajustez la taille des images si nécessaire */
+    height: 100px;
+    object-fit: contain;
+}
+
+.tool-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: scale(1.05);
+}
+
+.tool-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.tool-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tool-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.tool-includes img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.tool-badge {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.tool-card .tool-badge.animated-badge {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.img-ecomhunt {
+    width: 2000px;
+    height: 2000px;
+}

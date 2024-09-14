@@ -124,6 +124,15 @@ h1 {
     display: inline-block;
 }
 
+.tool-building {
+    background-color: #ff7f00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+    display: inline-block;
+}
 .tool-card .tool-badge.animated-badge {
     animation: pulse 1.5s infinite;
 }

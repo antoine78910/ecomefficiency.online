@@ -92,6 +92,16 @@
           background-size: 20px 20px;
         }
       </style>
+<!-- Popup de confirmation -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h3>Êtes-vous sûr de vouloir continuer ?</h3>
+    <button id="yesButton" class="btn-yes">Oui</button>
+    <button id="noButton" class="btn-no">Non</button>
+  </div>
+</div>
+
       
 
       <link href="https://fonts.googleapis.com/css2?family=Kanitfamily=Anton&family=Bebas+Neue&family=Lato:wght@300;400;700&family=Merriweather:wght@400&family=Montserrat:wght@500;600&family=Nunito:wght@400&family=Open+Sans:wght@400&family=Poppins:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -209,13 +219,25 @@
             <div class="tool-name">Capcut</div>
             <div class="tool-description">Create and edit stunning videos for social media and personal projects using CapCut's intuitive interface and advanced editing features.</div>
         </a>
-        <a href="https://app.afterlib.com/ads" class="tool-card" target="_blank" rel="noopener noreferrer" id="afterlibButton">
-    <div class="tool-icon">
-        <img src="img/after.png" alt="Adspy" class="w-16 h-16 object-contain">
+  <a href="#" class="tool-card" id="afterlibButton">
+        <div class="tool-icon">
+            <img src="img/after.png" alt="Adspy" class="w-16 h-16 object-contain">
+        </div>
+        <div class="tool-name">AfterLib</div>
+        <div class="tool-description">AfterLib is an advertising analysis and product research tool for e-commerce, offering valuable insights into marketing strategies and sales trends.</div>
+    </a>
+
+    <!-- Popup de confirmation -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h3>Êtes-vous sûr de vouloir continuer ?</h3>
+            <button id="yesButton" class="btn-yes">Oui</button>
+            <button id="noButton" class="btn-no">Non</button>
+        </div>
     </div>
-    <div class="tool-name">AfterLib</div>
-    <div class="tool-description">AfterLib is an advertising analysis and product research tool for e-commerce, offering valuable insights into marketing strategies and sales trends.</div>
-</a>
+
+    <script src="content.js"></script> 
 
 <!--
         <a href="https://www.midjourney.com/explore?tab=top" class="tool-card" target="_blank" rel="noopener noreferrer">

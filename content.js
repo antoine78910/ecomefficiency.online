@@ -5,24 +5,11 @@ const closeModal = document.getElementById('closeModal');
 const yesButton = document.getElementById('yesButton');
 const noButton = document.getElementById('noButton');
 
-// Vérifier l'heure du dernier clic dans le stockage de l'extension
-chrome.storage.local.get(['lastClicked'], (result) => {
-  const currentTime = Date.now();
-  const lastClickedTime = result.lastClicked || 0;
-  const timeoutDuration = 3600 * 1000; // 1 heure en millisecondes
-
-  if (currentTime - lastClickedTime < timeoutDuration) {
-    const remainingTime = timeoutDuration - (currentTime - lastClickedTime);
-    disableButton(remainingTime);  // Désactiver le bouton pendant la durée restante
-  } else {
-    enableButton();  // Réactiver le bouton si 1 heure s'est écoulée
-  }
-});
-
-// Lors du clic sur le bouton, afficher le popup de confirmation
+// Lors du clic sur le bouton "AfterLib", afficher le popup de confirmation
 afterLibButton.addEventListener('click', () => {
   // Afficher le popup de confirmation
-  confirmationModal.style.display = 'block';
+  confirmationModal.style.display = 'block'; // Afficher le popup
+  afterLibButton.disabled = true;  // Désactiver le bouton "AfterLib" pendant l'attente de la réponse
 });
 
 // Lors du clic sur le bouton "Oui" dans le popup
@@ -34,17 +21,20 @@ yesButton.addEventListener('click', () => {
 
   // Fermer le popup après confirmation
   confirmationModal.style.display = 'none';
+  afterLibButton.disabled = false;  // Réactiver le bouton "AfterLib"
 });
 
 // Lors du clic sur le bouton "Non" dans le popup
 noButton.addEventListener('click', () => {
-  // Fermer simplement le popup sans faire d'action
+  // Fermer le popup simplement sans faire d'action
   confirmationModal.style.display = 'none';
+  afterLibButton.disabled = false;  // Réactiver le bouton "AfterLib"
 });
 
 // Fermer le popup lorsque l'utilisateur clique sur "X"
 closeModal.addEventListener('click', () => {
   confirmationModal.style.display = 'none';
+  afterLibButton.disabled = false;  // Réactiver le bouton "AfterLib"
 });
 
 // Fonction pour désactiver le bouton et afficher un compte à rebours
@@ -73,3 +63,4 @@ function enableButton() {
   afterLibButton.disabled = false;
   afterLibButton.innerText = "AfterLib";  // Réinitialiser le texte du bouton
 }
+

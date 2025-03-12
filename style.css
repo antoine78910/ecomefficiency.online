@@ -137,38 +137,38 @@ h1 {
     animation: pulse 1.5s infinite;
 }
 /* style.css */
-#afterlibButton:disabled {
-  background-color: #cccccc;  /* Gris */
-  cursor: not-allowed;  /* Pointeur non autorisé */
-}
 
-/* Style pour le popup modal */
+/* Styles pour la boîte modale (popup) */
 .modal {
-  display: none; /* Cacher par défaut */
-  position: fixed; /* Positionner en bas de la page */
-  z-index: 1;
+  display: none; /* Cacher le popup par défaut */
+  position: fixed; /* Positionner en haut de la page */
+  z-index: 1000; /* Au-dessus de tous les autres éléments */
   left: 0;
   top: 0;
-  width: 100%; /* Prendre toute la largeur */
-  height: 100%; /* Prendre toute la hauteur */
-  background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
-  padding-top: 60px;
+  width: 100%; /* Prendre toute la largeur de l'écran */
+  height: 100%; /* Prendre toute la hauteur de l'écran */
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  padding-top: 100px; /* Espace au sommet de l'écran */
+  text-align: center; /* Centrer le contenu */
 }
 
+/* Contenu du popup */
 .modal-content {
   background-color: #fff;
-  margin: 5% auto;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Largeur de la boîte de dialogue */
-  text-align: center;
+  width: 50%; /* Largeur du popup */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
 
+/* Bouton de fermeture (X) */
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -178,12 +178,14 @@ h1 {
   cursor: pointer;
 }
 
+/* Styles pour les boutons "Oui" et "Non" */
 button {
   margin: 10px;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-yes {
@@ -195,6 +197,11 @@ button {
   background-color: red;
   color: white;
 }
+
+.btn-yes:hover, .btn-no:hover {
+  opacity: 0.8; /* Légère transparence au survol */
+}
+
 
 
 @keyframes pulse {

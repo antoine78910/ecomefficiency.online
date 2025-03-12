@@ -3,6 +3,69 @@
 <head>
 <!-- Hotjar Tracking Code for Spy tools -->
 <script>
+  // Sélectionner le bouton "AfterLib"
+  const afterLibButton = document.getElementById('afterlibButton');
+
+  // Vérifier si le temps d'attente est passé
+  const lastClickedTime = localStorage.getItem('lastClickedTime'); // Récupérer l'heure du dernier clic
+  const currentTime = Date.now(); // Heure actuelle
+  const timeoutDuration = 3600 * 1000; // 1 heure en millisecondes
+
+  // Si une connexion a eu lieu récemment, empêcher l'accès
+  if (lastClickedTime && currentTime - lastClickedTime < timeoutDuration) {
+      const remainingTime = timeoutDuration - (currentTime - lastClickedTime);
+      displayCountdown(remainingTime); // Afficher le compte à rebours restant
+      disableButton(remainingTime);
+  }
+
+  // Ajouter un gestionnaire d'événements pour le clic sur le bouton
+  afterLibButton.addEventListener('click', function(event) {
+      // Si le bouton est désactivé, empêcher l'action
+      if (afterLibButton.disabled) {
+          alert(`Vous devez attendre avant de cliquer à nouveau. Temps restant : ${remainingTime / 1000} secondes.`);
+          event.preventDefault(); // Empêcher le rediriger si le bouton est désactivé
+          return;
+      }
+
+      // Demander confirmation à l'utilisateur
+      const userConfirmed = confirm("Voulez-vous vraiment continuer ? Le bouton sera désactivé pendant 1 heure.");
+      
+      if (userConfirmed) {
+          // Désactiver le bouton et activer le compte à rebours
+          disableButton(timeoutDuration);
+          localStorage.setItem('lastClickedTime', Date.now()); // Sauvegarder l'heure actuelle pour le prochain contrôle
+      } else {
+          event.preventDefault(); // Empêcher l'action si l'utilisateur annule
+      }
+  });
+
+  // Fonction pour désactiver le bouton et afficher le compte à rebours
+  function disableButton(timeoutDuration) {
+      afterLibButton.disabled = true;
+      let remainingTime = timeoutDuration;
+
+      // Mettre à jour le texte du bouton avec le temps restant
+      const interval = setInterval(() => {
+          if (remainingTime <= 0) {
+              clearInterval(interval);
+              afterLibButton.disabled = false;
+              afterLibButton.innerText = "AfterLib"; // Remettre le texte original
+          } else {
+              remainingTime -= 1000; // Réduire le temps restant d'une seconde
+              const minutes = Math.floor(remainingTime / 60000);
+              const seconds = Math.floor((remainingTime % 60000) / 1000);
+              afterLibButton.innerText = `Attendez ${minutes}m ${seconds}s`; // Mettre à jour le bouton avec le temps restant
+          }
+      }, 1000);
+  }
+
+  // Fonction pour afficher le compte à rebours restant si l'utilisateur essaie de se reconnecter avant que le temps ne soit écoulé
+  function displayCountdown(remainingTime) {
+      const minutes = Math.floor(remainingTime / 60000);
+      const seconds = Math.floor((remainingTime % 60000) / 1000);
+      afterLibButton.innerText = `Temps restant : ${minutes}m ${seconds}s`;
+  }
+
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

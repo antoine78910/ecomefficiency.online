@@ -9,7 +9,7 @@
   // Vérifier si le temps d'attente est passé
   const lastClickedTime = localStorage.getItem('lastClickedTime'); // Récupérer l'heure du dernier clic
   const currentTime = Date.now(); // Heure actuelle
-  const timeoutDuration = 3600 * 1000; // 1 heure en millisecondes
+  const timeoutDuration = 60000; // 1 minute en millisecondes
 
   // Si une connexion a eu lieu récemment, empêcher l'accès
   if (lastClickedTime && currentTime - lastClickedTime < timeoutDuration) {
@@ -21,14 +21,17 @@
   // Ajouter un gestionnaire d'événements pour le clic sur le bouton
   afterLibButton.addEventListener('click', function(event) {
       // Si le bouton est désactivé, empêcher l'action
+      const lastClickedTime = localStorage.getItem('lastClickedTime');
+      const currentTime = Date.now();
       if (afterLibButton.disabled) {
+          const remainingTime = timeoutDuration - (currentTime - lastClickedTime);
           alert(`Vous devez attendre avant de cliquer à nouveau. Temps restant : ${remainingTime / 1000} secondes.`);
           event.preventDefault(); // Empêcher le rediriger si le bouton est désactivé
           return;
       }
 
       // Demander confirmation à l'utilisateur
-      const userConfirmed = confirm("Voulez-vous vraiment continuer ? Le bouton sera désactivé pendant 1 heure.");
+      const userConfirmed = confirm("Voulez-vous vraiment continuer ? Le bouton sera désactivé pendant 1 minute.");
       
       if (userConfirmed) {
           // Désactiver le bouton et activer le compte à rebours
@@ -65,8 +68,8 @@
       const seconds = Math.floor((remainingTime % 60000) / 1000);
       afterLibButton.innerText = `Temps restant : ${minutes}m ${seconds}s`;
   }
-
 </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecom Efficiency Tools</title>

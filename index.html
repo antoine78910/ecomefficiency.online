@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+f<!DOCTYPE html>
 <html lang="fr">
 <head>
 <!-- Hotjar Tracking Code for Spy tools -->
@@ -254,129 +254,8 @@
     <div class="tool-description">
         AI-powered voice synthesis technology that creates realistic and customizable human-like speech for various applications
     </div>
-
-    <!-- Popup avec classes CSS personnalisées -->
-    <div class="elevenlabs-popup">
-        <!-- Header -->
-        <div class="elevenlabs-header">
-            <div class="elevenlabs-icon">
-                <svg viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-            </div>
-            <span class="elevenlabs-title">Credits Status</span>
-        </div>
-        
-        <!-- Contenu -->
-        <div class="elevenlabs-content">
-            <div class="elevenlabs-info-line">
-                <span>🔄</span>
-                <span>Credits refill every <strong>3 days</strong></span>
-            </div>
-            
-            <div class="elevenlabs-info-line">
-                <span>⏰</span>
-                <span>Next refill in <strong><span id="elevenlabs-countdown">calculating...</span></strong></span>
-            </div>
-        </div>
-        
-        <!-- Progress bar -->
-        <div class="elevenlabs-progress-container">
-            <div class="elevenlabs-progress-bg">
-                <div id="elevenlabs-progress" class="elevenlabs-progress-bar"></div>
-            </div>
-            <div class="elevenlabs-progress-text">
-                <span id="elevenlabs-progress-text">Loading...</span>
-            </div>
-        </div>
-    </div>
 </a>
-
-<script>
-(function() {
-    // Configuration: refill tous les 3 jours (72 heures)
-    const REFILL_INTERVAL_HOURS = 72;
     
-    // Date de référence: DERNIER refill effectué (pas le prochain)
-    const LAST_REFILL_DATE = new Date('2025-01-29T00:09:00Z'); // ← Date de votre DERNIER refill
-    
-    function updateCountdown() {
-        const now = new Date();
-        const timeSinceLastRefill = now.getTime() - LAST_REFILL_DATE.getTime();
-        const hoursSinceLastRefill = timeSinceLastRefill / (1000 * 60 * 60);
-        
-        const hoursInCurrentCycle = hoursSinceLastRefill % REFILL_INTERVAL_HOURS;
-        const hoursUntilNextRefill = REFILL_INTERVAL_HOURS - hoursInCurrentCycle;
-        
-        // Calculer les heures et minutes restantes
-        const totalMinutesRemaining = Math.max(1, hoursUntilNextRefill * 60);
-        const hoursRemaining = Math.floor(totalMinutesRemaining / 60);
-        const minutesRemaining = Math.floor(totalMinutesRemaining % 60);
-        
-        const progressPercentage = Math.min(100, (hoursInCurrentCycle / REFILL_INTERVAL_HOURS) * 100);
-        
-        // Mettre à jour le countdown avec heures et minutes
-        const countdownElement = document.getElementById('elevenlabs-countdown');
-        if (countdownElement) {
-            if (totalMinutesRemaining < 60) {
-                // Moins d'une heure : afficher seulement les minutes
-                countdownElement.textContent = `${minutesRemaining} minutes`;
-            } else if (hoursRemaining < 1) {
-                // Moins d'une heure mais plus de 0 : afficher les minutes
-                countdownElement.textContent = `${Math.ceil(totalMinutesRemaining)} minutes`;
-            } else {
-                // Plus d'une heure : afficher heures et minutes
-                if (minutesRemaining === 0) {
-                    countdownElement.textContent = `${hoursRemaining}h`;
-                } else {
-                    countdownElement.textContent = `${hoursRemaining}h ${minutesRemaining}m`;
-                }
-            }
-        }
-        
-        // Mettre à jour la barre de progression
-        const progressBar = document.getElementById('elevenlabs-progress');
-        if (progressBar) {
-            progressBar.style.width = progressPercentage + '%';
-        }
-        
-        // Mettre à jour le texte de progression
-        const progressText = document.getElementById('elevenlabs-progress-text');
-        if (progressText) {
-            if (totalMinutesRemaining < 60) {
-                progressText.textContent = 'Refilling soon...';
-            } else if (hoursRemaining < 24) {
-                // Jour 3
-                if (minutesRemaining === 0) {
-                    progressText.textContent = `Day 3 - ${hoursRemaining}h remaining`;
-                } else {
-                    progressText.textContent = `Day 3 - ${hoursRemaining}h ${minutesRemaining}m remaining`;
-                }
-            } else if (hoursRemaining < 48) {
-                // Jour 2  
-                const adjustedHours = hoursRemaining - 24;
-                if (minutesRemaining === 0) {
-                    progressText.textContent = `Day 2 - ${adjustedHours}h remaining`;
-                } else {
-                    progressText.textContent = `Day 2 - ${adjustedHours}h ${minutesRemaining}m remaining`;
-                }
-            } else {
-                // Jour 1
-                const adjustedHours = hoursRemaining - 48;
-                if (minutesRemaining === 0) {
-                    progressText.textContent = `Day 1 - ${adjustedHours}h remaining`;
-                } else {
-                    progressText.textContent = `Day 1 - ${adjustedHours}h ${minutesRemaining}m remaining`;
-                }
-            }
-        }
-    }
-    
-    updateCountdown();
-    // Mettre à jour toutes les minutes au lieu de toutes les heures
-    setInterval(updateCountdown, 60 * 1000);
-})();
-</script>
           <a href="https://noxtools.com/secure/page/Runwayml" class="tool-card" target="_blank" rel="noopener noreferrer">
             <div class="tool-icon">
                 <img src="img/runway.png" alt="Grammarly" class="w-16 h-16 object-contain">
@@ -773,6 +652,7 @@ AdSpy --><!--
     </div>
 </body>
 </html>
+
 
 
 
